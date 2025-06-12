@@ -1,16 +1,27 @@
 package com.example.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
 public class User {
-    // 成员变量及注释
+    @NotNull
     private Integer id;            // 主键ID
     private String username;       // 用户名
-    private String password;       // 密码（原代码中变量名拼写错误，应为`password`，修正后）
+    //  转化为json时忽略
+    @JsonIgnore
+    private String password;       // 密码
+    @NotEmpty
+    @Pattern(regexp = "^\\S{5,16}$")
     private String nickname;       // 昵称
+    @NotEmpty
+    @Email
     private String email;// 邮箱
     private String userPic;        // 用户头像地址
     private LocalDateTime createTime;  // 创建时间

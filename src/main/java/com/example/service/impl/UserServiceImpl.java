@@ -24,4 +24,10 @@ public class UserServiceImpl implements UserService {
          String md5Pwd = Md5Util.getMD5String(password);
          userMapper.addUser(username,md5Pwd);
     }
+
+    @Override
+    public void update(User user) {
+
+        userMapper.update(user);
+    }
 }
