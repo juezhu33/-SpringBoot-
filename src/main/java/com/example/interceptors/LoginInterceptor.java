@@ -20,6 +20,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         //验证token
         try {
             Map<String, Object> claims = JwtUtil.parseToken(token);
+            //保存用户信息到ThreadLocalUtil中
             ThreadLocalUtil.set(claims);
             //放行
             return true;
@@ -29,6 +30,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             return false;
         }
     }
+
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {

@@ -22,6 +22,7 @@ public class Result<T> {
         return new Result(0, "操作成功", null);
     }
 
+    // 快速返回操作失败响应结果
     public static Result error(String message) {
         return new Result(1, message, null);
     }
